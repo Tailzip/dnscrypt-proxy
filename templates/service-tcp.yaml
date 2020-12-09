@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "dnscrypt-proxy.fullname" . }}-tcp
+  labels:
+    {{- include "dnscrypt-proxy.labels" . | nindent 4 }}
+{{- if .Values.serviceTCP.annotations }}
+  annotations:
+{{ toYaml .Values.serviceTCP.annotations | indent 4 }}
+{{- end }}
+spec:
+  type: {{ .Values.serviceTCP.type }}
+  {{- if .Values.serviceTCP.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.serviceTCP.loadBalancerIP }}
+  {{- end }}
+  {{- if or (eq .Values.serviceTCP.type "NodePort") (eq .Values.serviceTCP.type "LoadBalancer") }}
+  externalTrafficPolicy: {{ .Values.serviceTCP.externalTrafficPolicy }}
+  {{- end }}
+  ports:
+    - port: 53
+      targetPort: 5053
+      protocol: TCP
+      name: dns-tcp
+  selector:
+    {{- include "dnscrypt-proxy.selectorLabels" . | nindent 4 }}

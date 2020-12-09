@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "dnscrypt-proxy.fullname" . }}
+  labels:
+    {{- include "dnscrypt-proxy.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "dnscrypt-proxy.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "dnscrypt-proxy.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: dns-udp
+              containerPort: 5053
+              protocol: UDP
+            - name: dns-tcp
+              containerPort: 5053
+              protocol: TCP
+          {{- if .Values.config }}
+          volumeMounts:
+            - mountPath: /config/dnscrypt-proxy.toml
+              name: config
+              subPath: dnscrypt-proxy.toml
+              readOnly: true
+          {{- end }}
+          livenessProbe:
+            tcpSocket:
+              port: 5053
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            tcpSocket:
+              port: 5053
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      {{- if .Values.config }}
+      volumes:
+        - configMap:
+            name: {{ include "dnscrypt-proxy.fullname" . }}-config
+          name: config
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

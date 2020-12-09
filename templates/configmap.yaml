@@ -1,0 +1,10 @@
+{{- if .Values.config }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "dnscrypt-proxy.fullname" . }}-config
+  labels: {{- include "dnscrypt-proxy.labels" . | nindent 4 }}
+data:
+  dnscrypt-proxy.toml: |
+{{ .Values.config | indent 4 }}
+{{- end }}
