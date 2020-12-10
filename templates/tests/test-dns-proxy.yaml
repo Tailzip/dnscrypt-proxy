@@ -10,6 +10,9 @@ spec:
   containers:
     - name: hook-bind-tools
       image: tailzip/bind-tools:latest
-      args: ['dig', '@{{ include "dnscrypt-proxy.fullname" . }}-udp:5053', 'google.com']
+      args:
+        - 'dig'
+        - '@{{ include "dnscrypt-proxy.fullname" . }}-udp.{{ .Release.Namespace }}.svc.{{ .Values.clusterDomain | default "cluster.local" }}'
+        - 'google.com'
       imagePullPolicy: Always
   restartPolicy: Never
