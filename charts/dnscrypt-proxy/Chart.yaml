@@ -11,4 +11,4 @@ name: dnscrypt-proxy
 sources:
   - https://github.com/Tailzip/dnscrypt-proxy-helm-chart
 type: application
-version: 0.1.0
+version: 0.1.1
