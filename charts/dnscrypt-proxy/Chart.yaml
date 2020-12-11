@@ -3,12 +3,13 @@ appVersion: 2.0.44
 description: dnscrypt-proxy for Kubernetes
 icon: https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/logo.png
 keywords:
+  - dnscrypt-proxy
   - dnscrypt
 maintainers:
   - email: antoine@tanzil.li
-    name: Antoine TANZILLI
+    name: Tailzip
 name: dnscrypt-proxy
 sources:
   - https://github.com/Tailzip/dnscrypt-proxy-helm-chart
 type: application
-version: 0.1.1
+version: 0.1.2
