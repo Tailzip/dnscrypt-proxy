@@ -3,6 +3,25 @@ entries:
   dnscrypt-proxy:
   - apiVersion: v2
     appVersion: 2.0.44
+    created: "2020-12-12T10:23:39.970442204Z"
+    description: dnscrypt-proxy for Kubernetes
+    digest: 885649607b36218f69ba4c7e89223ea609756193927d15154b4bed53c6ce7696
+    icon: https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/logo.png
+    keywords:
+    - dnscrypt-proxy
+    - dnscrypt
+    maintainers:
+    - email: antoine@tanzil.li
+      name: Tailzip
+    name: dnscrypt-proxy
+    sources:
+    - https://github.com/Tailzip/dnscrypt-proxy-helm-chart
+    type: application
+    urls:
+    - https://github.com/Tailzip/dnscrypt-proxy-helm-chart/releases/download/dnscrypt-proxy-0.1.2/dnscrypt-proxy-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 2.0.44
     created: "2020-12-11T21:31:11.466607088Z"
     description: dnscrypt-proxy for Kubernetes
     digest: 0a2a1fd08b390838603dcf9750807873a5f334a425afd4114e4c2a932c93b84c
