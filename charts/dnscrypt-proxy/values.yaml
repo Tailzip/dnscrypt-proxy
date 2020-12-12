@@ -33,7 +33,8 @@ tolerations: []
 
 affinity: {}
 
-# dnscrypt-proxy TOML config
+# -- dnscrypt-proxy TOML configuration ([see docs](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Configuration))
 config: ""
 
+# -- used for Helm chart testing only (see [test-dns-proxy.yaml](./charts/dnscrypt-proxy/templates/tests/test-dns-proxy.yaml))
 clusterDomain: ""

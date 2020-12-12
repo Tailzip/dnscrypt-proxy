@@ -1,7 +1,7 @@
 apiVersion: v2
 appVersion: 2.0.44
 description: dnscrypt-proxy for Kubernetes
-icon: https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/logo.png
+icon: https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/logo.svg
 keywords:
   - dnscrypt-proxy
   - dnscrypt
@@ -10,6 +10,6 @@ maintainers:
     name: Tailzip
 name: dnscrypt-proxy
 sources:
-  - https://github.com/Tailzip/dnscrypt-proxy-helm-chart
+  - https://github.com/Tailzip/dnscrypt-proxy
 type: application
-version: 0.1.2
+version: 1.0.0
