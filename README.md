@@ -41,8 +41,12 @@ helm install --name your-release tailzip/dnscrypt-proxy
 | serviceUDP.type | string | `"NodePort"` |  |
 | tolerations | list | `[]` |  |
 
+## Acknowledgments
+
+Original software is by the DNSCrypt project: <https://dnscrypt.info/>
+
 ## License
 
-- Tailzip/dnscrypt-proxy-helm-chart: [MIT License](./LICENSE)
+- Tailzip/dnscrypt-proxy: [MIT License](./LICENSE)
 - klutchell/dnscrypt-proxy: [MIT License](https://github.com/klutchell/dnscrypt-proxy/blob/master/LICENSE)
 - DNSCrypt/dnscrypt-proxy: [ISC License](https://github.com/DNSCrypt/dnscrypt-proxy/blob/master/LICENSE)
